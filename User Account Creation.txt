@@ -1,0 +1,21 @@
+read -p "Enter User's full Name: " fname
+read -p "Enter User's Home Directory: " home
+read -p "Enter User's Login Name: " lname
+read -p "Enter User's UID: " uid
+
+if
+ [ "$uid" -lt "301" ]
+then
+ useradd -c "$fname" -u $uid -g staff -d $home -s /bin/bash -m $lname
+ passwd $lname
+ echo "User Account Suuccessfully created"
+ id -a $lname
+
+elif
+ [ "$uid" gt "300" ]
+then
+ useradd -c "$fname" -u $uid -g other -d $home -s /bin/bash -m $lname
+ passwd $lname
+ echo "User Account Suuccessfully created"
+ id -a $lname
+fi

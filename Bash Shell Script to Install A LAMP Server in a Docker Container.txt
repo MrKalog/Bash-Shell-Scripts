@@ -1,0 +1,79 @@
+#Install and Configure a LAMP server in a Centos 8 Docker Container
+
+
+
+#LAMP (Linux Apache Mysql PHP)
+
+
+
+#Install Apache
+
+
+
+echo "Installing Apache........"
+
+
+
+sleep 5
+
+
+
+yum install httpd -y
+
+
+
+systemctl enable --now httpd
+
+
+
+
+
+
+
+echo "Installing Mysql (Mariadb)......"
+
+
+
+#Install Mysql (Mariadb)
+
+
+
+sleep 5
+
+
+
+yum install mariadb-server mariadb -y
+
+
+
+systemctl enable --now mariadb
+
+
+
+mysql_secure_installation
+
+
+
+
+
+
+
+sleep 5
+
+
+
+echo "Installing PHP......."
+
+
+
+#Install PHP
+
+
+
+yum install -y php*
+
+
+
+systemctl restart httpd
+
+

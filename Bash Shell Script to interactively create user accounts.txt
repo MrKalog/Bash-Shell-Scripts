@@ -1,0 +1,23 @@
+read -p "Enter User's Full Names: " fname
+
+read -p "Enter User's Home Directory: " home
+
+read -p "Enter User's Login Name: " lname
+
+
+
+echo "Now Creating User Account for: " $fname"...."
+
+sleep 5
+
+
+
+useradd -c "$fname" -d $home -m $lname
+
+passwd $lname
+
+
+
+sleep 5
+
+echo "User Account Successfully Created for: " $fname

@@ -1,0 +1,106 @@
+echo "Detecting Operating System....."
+
+sleep 5
+
+if
+
+  test | uname -a | grep Linux > /dev/null
+
+then
+
+ echo "Operating System Detected: "
+
+ sleep 5
+
+ cat /etc/redhat-release
+
+ sleep 5
+
+ echo "--------------------------------------"
+
+ echo "Displaying Hardware Specs for this System..."
+
+ sleep 5
+
+ echo "RAM Size Detected: "
+
+ sleep 5
+
+ cat /proc/meminfo | grep Mem
+
+ echo "--------------------------------------"
+
+ sleep 5
+
+ echo "CPU Make, Model and Speed Detected: "
+
+ sleep 5
+
+ cat /proc/cpuinfo | grep "model name"
+
+ echo "--------------------------------------"
+
+ sleep 5
+
+ echo "OS Hard Drive Size Detected: "
+
+ sleep 5
+
+ fdisk -l | grep root
+
+
+
+elif
+
+ test | uname -a | grep SunOS > /dev/null
+
+then
+
+ echo "Operating System Detected: " 
+
+ sleep 5
+
+ cat /etc/release | grep "Oracle Solaris"
+
+ echo "--------------------------------------"
+
+ sleep 5
+
+ echo "Displaying Hardware Specs for this System..."
+
+ sleep 5
+
+ echo "RAM Size Detected: "
+
+ sleep 5
+
+ prtconf | grep Mem
+
+ echo "--------------------------------------"
+
+ sleep 5
+
+ echo "CPU Make, Model and Speed Detected: "
+
+ sleep 5
+
+ psrinfo -pv | tail -1
+
+ echo "--------------------------------------"
+
+ sleep 5
+
+ echo "OS Hard Drive Size Detected: "
+
+ sleep 5
+
+ iostat -En | grep Size | head -1
+
+
+
+else
+
+ echo "This System is not running a Solaris or Linux OS"
+
+fi
+
