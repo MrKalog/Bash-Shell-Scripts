@@ -1,0 +1,27 @@
+read -p "What is your Name: " name
+
+read -p "What is your Gender (male/female): " gender
+
+
+
+if
+
+ [[ "$gender" == "male" ]]
+
+then
+
+ echo "Hello Mr " $name
+
+elif
+
+ [[ "$gender" == "female" ]]
+
+then
+
+ echo "Hello Ms " $name
+
+else
+
+ echo "Your input is incorrect. Try again"
+
+fi

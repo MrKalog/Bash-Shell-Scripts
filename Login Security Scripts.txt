@@ -1,0 +1,19 @@
+y=$(w | grep -v root | grep `logname` | wc -l)
+
+if
+
+ [ "$y" -gt "1" ]
+
+then 
+
+ echo "Multiple Sessions detected for" `logname`
+
+fi
+
+sleep 5
+
+ echo "Terminaring your session....."
+
+sleep 5
+
+exit

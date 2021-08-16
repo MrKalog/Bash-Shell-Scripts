@@ -1,0 +1,87 @@
+echo "Setting Up Solaris Samba Server...."
+
+
+
+sleep 5
+
+
+
+read -p "Enter Samba Path: " path
+
+read -p "Enter Samba User's Login: " user
+
+read -p "Enter Samba share Label: " share
+
+read -p "Enter Description of Samba share: " desc
+
+
+
+echo "Configuring Samba Server....."
+
+sleep 5
+
+
+
+cp /etc/samba/smb.conf-example /etc/samba/smb.conf
+
+echo "Samba Configuration file created....."
+
+sleep 5
+
+
+
+mkdir $path
+
+chmod 777 $path
+
+echo "Samba Path Created...."
+
+sleep 5
+
+
+
+useradd $user
+
+echo "Samba User Created...."
+
+sleep 5
+
+
+
+echo "Creating Samba User's Password..."
+
+smbpasswd -a $user
+
+sleep 5
+
+
+
+echo "Samba settings being configured in smb.conf file..."
+
+sleep 5
+
+echo "[$share]" >> /etc/samba/smb.conf
+
+echo "comment = $desc" >> /etc/samba/smb.conf
+
+echo "path = $path" >> /etc/samba/smb.conf
+
+echo "force user = $user" >> /etc/samba/smb.conf
+
+echo "writable = yes" >> /etc/samba/smb.conf
+
+sleep 5
+
+
+
+echo "Enabling Samba daemon...."
+
+svcadm enable samba
+
+echo "Samba daemon enabled....."
+
+sleep 5
+
+
+
+echo "Samba Server Successfully Configured....."
